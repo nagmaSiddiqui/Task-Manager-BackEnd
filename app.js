@@ -3,17 +3,17 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const tasksRouter = require("./routes/tasks");
+require("dotenv").config();
 
 const app = express();
 
+const mongoURI = process.env.MONGO_URI;
+
 // Connect to MongoDB
-mongoose.connect(
-  "mongodb+srv://nagma:nagma0901@cluster0.su6nqwk.mongodb.net/taskmanager?retryWrites=true&w=majority&appName=Cluster0",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
