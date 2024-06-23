@@ -7,10 +7,13 @@ const tasksRouter = require("./routes/tasks");
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/taskmanager", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://nagma:nagma0901@cluster0.su6nqwk.mongodb.net/taskmanager?retryWrites=true&w=majority&appName=Cluster0",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
